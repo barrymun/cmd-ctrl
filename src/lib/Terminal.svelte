@@ -2,8 +2,7 @@
   import { onMount } from "svelte";
 
   $: cmd = "";
-  $: commands = [
-  ];
+  $: commands = [];
 
   let scrollBottom;
 
@@ -28,10 +27,10 @@
   });
 </script>
 
-<main class="wrapper">
-  <div id="commands-wrapper">
+<div class="wrapper">
+  <div class="commands-wrapper">
     {#each commands as command}
-      <div>
+      <div class="command-item">
         {command}
       </div>
     {/each}
@@ -46,14 +45,16 @@
       on:keyup={onEnter}
     />
   </div>
-</main>
+</div>
 
 <style>
   .wrapper {
-    height: 100%;
+    /* subtract 2 * margin */
+    height: calc(100% - 16px);
+    margin: 8px;
   }
 
-  #commands-wrapper {
+  .commands-wrapper {
     /* takes into account height of the input and the padding */
     height: calc(100% - 32px);
     /* this fixes the scroll to bug */
@@ -61,12 +62,15 @@
     overflow-y: scroll;
     width: 100%;
     /* scroll-snap-type: y proximity; */
-    /* display: flex;
-    flex-direction: column;
-    align-items: flex-start; */
+    /* display: flex; */
   }
-  #commands-wrapper > div:last-child {
+  .commands-wrapper > div:last-child {
     /* scroll-snap-align: start; */
+  }
+
+  .command-item {
+    /* display: inline-block;
+    align-self: flex-end; */
   }
 
   .input-wrapper {
