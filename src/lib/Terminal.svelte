@@ -2,7 +2,19 @@
   import { onMount } from "svelte";
 
   $: cmd = "";
-  $: commands = [];
+  $: commands = [
+    // 'test',
+    // 'test',
+    // 'test',
+    // 'test',
+    // 'test',
+    // 'test',
+    // 'test',
+    // 'test',
+    // 'test',
+    // 'test',
+    // 'test',
+  ];
 
   let scrollBottom;
 
@@ -25,6 +37,8 @@
   onMount(() => {
     autoScroll();
   });
+
+  // TODO: scroll to bottom on resize
 </script>
 
 <div class="wrapper">
@@ -56,13 +70,16 @@
 
   .commands-wrapper {
     /* takes into account height of the input and the padding */
-    height: calc(100% - 32px);
+    max-height: calc(100% - 32px);
     /* this fixes the scroll to bug */
     /* padding-bottom: 24px; */
     overflow-y: scroll;
     width: 100%;
     /* scroll-snap-type: y proximity; */
     /* display: flex; */
+    /* flex: 1 1 0;
+    flex-direction: column;
+    justify-content: flex-end; */
   }
   .commands-wrapper > div:last-child {
     /* scroll-snap-align: start; */
