@@ -1,6 +1,12 @@
 <script lang="ts">
-  import svelteLogo from "./assets/svelte.svg";
+  import { onMount } from "svelte";
   import Terminal from "./lib/Terminal.svelte";
+
+  // TODO: localStorage to manage map layout if procedurally generated
+  // or should the map layout be fixed & the data retrieved from a json file etc.?
+  onMount(() => {
+    console.log('MOUNTED')
+  });
 </script>
 
 <main>
