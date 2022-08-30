@@ -1,29 +1,35 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   $: cmd = "";
 
   $: commands = [
-    'test',
-    'test',
-    'test',
-    'test',
-    'test',
-    'test',
-    'test',
-    'test',
+    
   ];
-  function addCommand(newCommand) {
+  function addCommand(newCommand: string) {
     commands = [...commands, newCommand];
+    scrollToBottom();
   }
 
   function onEnter(event: KeyboardEvent) {
-    if (event.key !== "Enter") return false;
+    if (event.key !== "Enter" || cmd === "") return false;
     addCommand(cmd);
     cmd = ""; // reset
   }
+
+  function scrollToBottom() {
+    // return;
+    let el = document.getElementById("commands-wrapper");
+    el.scrollTop = el.scrollHeight;
+  }
+
+  onMount(() => {
+    scrollToBottom();
+  });
 </script>
 
 <main class="wrapper">
-  <div class="commands-wrapper">
+  <div id="commands-wrapper">
     {#each commands as command}
       <div>
         {command}
@@ -32,7 +38,12 @@
   </div>
 
   <div class="input-wrapper">
-    <input placeholder=">&nbsp;" bind:value={cmd} on:keyup={onEnter} />
+    <input
+      autofocus
+      placeholder=">&nbsp;"
+      bind:value={cmd}
+      on:keyup={onEnter}
+    />
   </div>
 </main>
 
@@ -40,16 +51,25 @@
   .wrapper {
     height: 100%;
   }
-  
-  .commands-wrapper {
-    height: calc(100% - 32px);
+
+  #commands-wrapper {
+    height: calc(
+      100% - 32px - 24px
+    ); /* takes into account height of the input and the padding */
+    padding-bottom: 24px; /* this fixes the scroll to bug */
     overflow-y: scroll;
+    width: 100%;
+    /* scroll-snap-type: y proximity; */
+  }
+  #commands-wrapper > div:last-child {
+    /* scroll-snap-align: start; */
   }
 
   .input-wrapper {
-    position: fixed;
+    /* position: fixed;
     bottom: 0;
-    left: 0;
+    left: 0; */
     height: 32px;
+    width: 100%;
   }
 </style>
