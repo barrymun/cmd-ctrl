@@ -2,13 +2,14 @@
   import { onMount } from "svelte";
 
   $: cmd = "";
-
   $: commands = [
-    
   ];
+
+  let scrollBottom;
+
   function addCommand(newCommand: string) {
     commands = [...commands, newCommand];
-    scrollToBottom();
+    autoScroll();
   }
 
   function onEnter(event: KeyboardEvent) {
@@ -17,14 +18,12 @@
     cmd = ""; // reset
   }
 
-  function scrollToBottom() {
-    // return;
-    let el = document.getElementById("commands-wrapper");
-    el.scrollTop = el.scrollHeight;
+  function autoScroll() {
+    setTimeout(() => scrollBottom?.scrollIntoView({ behavior: "auto" }), 50);
   }
 
   onMount(() => {
-    scrollToBottom();
+    autoScroll();
   });
 </script>
 
@@ -35,6 +34,7 @@
         {command}
       </div>
     {/each}
+    <div class="dummy" bind:this={scrollBottom} />
   </div>
 
   <div class="input-wrapper">
@@ -53,13 +53,16 @@
   }
 
   #commands-wrapper {
-    height: calc(
-      100% - 32px - 24px
-    ); /* takes into account height of the input and the padding */
-    padding-bottom: 24px; /* this fixes the scroll to bug */
+    /* takes into account height of the input and the padding */
+    height: calc(100% - 32px);
+    /* this fixes the scroll to bug */
+    /* padding-bottom: 24px; */
     overflow-y: scroll;
     width: 100%;
     /* scroll-snap-type: y proximity; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: flex-start; */
   }
   #commands-wrapper > div:last-child {
     /* scroll-snap-align: start; */
