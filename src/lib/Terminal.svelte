@@ -19,6 +19,7 @@
   }
 
   function autoScroll() {
+    // small delay seems to fix the scroll issue
     setTimeout(() => scrollBottom?.scrollIntoView({ behavior: "auto" }), 50);
   }
 
