@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import Map from "./lib/Map.svelte";
+  import WorldMap from "./lib/WorldMap.svelte";
   import Terminal from "./lib/Terminal.svelte";
 
   // TODO: localStorage to manage map layout if procedurally generated
@@ -11,16 +11,17 @@
 </script>
 
 <main>
-  <div class="map">
-    <Map />
+  <div class="world-map">
+    <WorldMap />
   </div>
+  
   <div class="terminal">
     <Terminal />
   </div>
 </main>
 
 <style>
-  .map {
+  .world-map {
     position: fixed;
     top: 0;
     left: 0;
