@@ -1,22 +1,29 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, SvelteComponent } from "svelte";
   import WorldMap from "./lib/WorldMap.svelte";
   import Terminal from "./lib/Terminal.svelte";
+
+  let worldMap: SvelteComponent;
 
   // TODO: localStorage to manage map layout if procedurally generated
   // or should the map layout be fixed & the data retrieved from a json file etc.?
   onMount(() => {
-    console.log('MOUNTED')
+    console.log("MOUNTED");
   });
+
+  function scrollToTile(x: number, y: number) {
+    console.log(x, y)
+    worldMap.scrollToTile(x, y);
+  }
 </script>
 
 <main>
   <div class="world-map">
-    <WorldMap />
+    <WorldMap bind:this={worldMap} />
   </div>
-  
+
   <div class="terminal">
-    <Terminal />
+    <Terminal {scrollToTile} />
   </div>
 </main>
 
@@ -29,7 +36,7 @@
     width: 60%;
     border: 1px solid black;
   }
-  
+
   .terminal {
     position: fixed;
     bottom: 0;

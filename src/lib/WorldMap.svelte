@@ -5,21 +5,29 @@
   import MapBlockCity from "./MapBlockCity.svelte";
 
   // console.log(mapRows);
-  
-  function scrollToTile(i: number, j: number) {
-    let el = document.getElementById(i.toString() + j.toString())
-    if (el == null) return
-    el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'center' })
-  }
 
+  export function scrollToTile(x: number, y: number) {
+    console.log(x, y);
+    let el = document.getElementById(x.toString() + y.toString());
+    if (el == null) return;
+    console.log(el);
+    el.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "center",
+    });
+  }
 </script>
 
 <div class="container">
-  {#each mapRows as mapCols, i}
+  {#each mapRows as mapCols, x}
     <div class="map-row">
-      {#each mapCols as mapCol, j}
+      {#each mapCols as mapCol, y}
         <div class="map-col">
-          <div id={i.toString() + j.toString()} on:click={() => scrollToTile(i, j)}>
+          <div
+            id={x.toString() + y.toString()}
+            on:click={() => scrollToTile(x, y)}
+          >
             {#if mapCol.type === 1}
               <MapBlockPlayer />
             {:else if mapCol.type === 2}

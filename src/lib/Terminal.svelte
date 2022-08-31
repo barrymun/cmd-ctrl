@@ -1,24 +1,35 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  let worldMap
+  // props
+  export let scrollToTile: Function | undefined;
+
+  //
+  let scrollBottom: HTMLDivElement | undefined;
+
+  // constants
+  let INSTRUCTION_WORLD = "world";
 
   $: cmd = "";
-  $: commands = [
-    // 'test',
-    // 'test',
-    // 'test',
-    // 'test',
-    // 'test',
-    // 'test',
-    // 'test',
-    // 'test',
-    // 'test',
-    // 'test',
-    // 'test',
-  ];
+  $: commands = [];
 
-  let scrollBottom;
+  function parseCommand(text: string) {
+    let words = text.split(" ");
+
+    if (words.length < 1) return; // invalid
+    let instruction = words[0];
+    switch (instruction) {
+      case INSTRUCTION_WORLD:
+        if (words.length < 2) return; // need x co-ordinate
+        if (words.length < 3) return; // need y co-ordinate
+        let x = parseInt(words[1]);
+        let y = parseInt(words[2]);
+        scrollToTile(x, y);
+        break;
+      default:
+        return; // handle unknown instruction
+    }
+  }
 
   function addCommand(newCommand: string) {
     commands = [...commands, newCommand];
@@ -28,6 +39,7 @@
   function onEnter(event: KeyboardEvent) {
     if (event.key !== "Enter" || cmd === "") return false;
     addCommand(cmd);
+    parseCommand(cmd); // attempt to carry out the instruction
     cmd = ""; // reset
   }
 
