@@ -18,30 +18,30 @@
 </script>
 
 <div class="container">
-  {#each mapRows as mapCols, x}
-    <div class="map-row">
-      {#each mapCols as mapCol, y}
-        <div class="map-col">
-          <div
-            id={x.toString() + y.toString()}
-            class="tile"
-            on:click={() => scrollToTile(x, y, true)}
-          >
-            {#if mapCol.type === 1}
-              <MapBlockPlayer />
-            {:else if mapCol.type === 2}
-              <MapBlockBlank />
-            {:else if mapCol.type === 3}
-              <MapBlockCity />
-            {:else}
-              {"..."}
-            {/if}
-            &nbsp;{x.toString() + y.toString()}
+    {#each mapRows as mapCols, x}
+      <div class="map-row">
+        {#each mapCols as mapCol, y}
+          <div class="map-col">
+            <div
+              id={x.toString() + y.toString()}
+              class="tile"
+              on:click={() => scrollToTile(x, y, true)}
+            >
+              {#if mapCol.type === 1}
+                <MapBlockPlayer />
+              {:else if mapCol.type === 2}
+                <MapBlockBlank />
+              {:else if mapCol.type === 3}
+                <MapBlockCity />
+              {:else}
+                {"..."}
+              {/if}
+              &nbsp;{x.toString() + y.toString()}
+            </div>
           </div>
-        </div>
-      {/each}
-    </div>
-  {/each}
+        {/each}
+      </div>
+    {/each}
 </div>
 
 <style>
@@ -50,7 +50,6 @@
     width: 100%;
     overflow: hidden;
     cursor: crosshair;
-    /* scroll-behavior: smooth; */
   }
 
   .map-row {

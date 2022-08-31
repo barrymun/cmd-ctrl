@@ -32,7 +32,7 @@
     top: 0;
     left: 0;
     height: 80vh;
-    width: 60%;
+    width: 50%;
     border: 1px solid black;
   }
 
