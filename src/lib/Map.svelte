@@ -7,10 +7,9 @@
   // console.log(mapRows);
   
   function scrollToTile(i: number, j: number) {
-    console.log(i, j)
     let el = document.getElementById(i.toString() + j.toString())
     if (el == null) return
-    el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'center' });
+    el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'center' })
   }
 
 </script>
