@@ -12,7 +12,6 @@
   });
 
   function scrollToTile(x: number, y: number) {
-    console.log(x, y)
     worldMap.scrollToTile(x, y);
   }
 </script>

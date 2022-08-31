@@ -6,15 +6,13 @@
 
   // console.log(mapRows);
 
-  export function scrollToTile(x: number, y: number) {
-    console.log(x, y);
+  export function scrollToTile(x: number, y: number, smooth: boolean = false) {
     let el = document.getElementById(x.toString() + y.toString());
     if (el == null) return;
-    console.log(el);
     el.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
+      behavior: smooth ? "smooth" : "auto",
       block: "center",
+      inline: "center",
     });
   }
 </script>
@@ -26,7 +24,8 @@
         <div class="map-col">
           <div
             id={x.toString() + y.toString()}
-            on:click={() => scrollToTile(x, y)}
+            class="tile"
+            on:click={() => scrollToTile(x, y, true)}
           >
             {#if mapCol.type === 1}
               <MapBlockPlayer />
@@ -37,6 +36,7 @@
             {:else}
               {"..."}
             {/if}
+            &nbsp;{x.toString() + y.toString()}
           </div>
         </div>
       {/each}
@@ -48,9 +48,9 @@
   .container {
     height: 100%;
     width: 100%;
-    /* overflow: scroll; */
     overflow: hidden;
     cursor: crosshair;
+    /* scroll-behavior: smooth; */
   }
 
   .map-row {
@@ -58,5 +58,14 @@
   }
 
   .map-col {
+  }
+
+  .tile {
+    height: 100px;
+    width: 100px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>

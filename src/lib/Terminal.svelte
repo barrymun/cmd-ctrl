@@ -67,7 +67,7 @@
 
   <div class="input-wrapper">
     <input
-      autofocus
+      
       placeholder=">&nbsp;"
       bind:value={cmd}
       on:keyup={onEnter}
