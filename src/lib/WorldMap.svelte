@@ -49,7 +49,7 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
-    cursor: crosshair;
+    cursor: pointer;
   }
 
   .map-row {
@@ -66,5 +66,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .tile:hover {
+    background-color: lightblue;
   }
 </style>
