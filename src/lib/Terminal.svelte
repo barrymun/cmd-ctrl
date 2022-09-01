@@ -10,8 +10,11 @@
   // constants
   let INSTRUCTION_WORLD = "world";
 
-  $: cmd = "";
-  $: commands = [];
+  // $: cmd = "";
+  // $: commands = [];
+  let cmd: string = "";
+  let commands: string[] = [];
+  let commandsPtr: number = 0;
 
   function parseCommand(text: string) {
     let words = text.split(" ");
@@ -33,14 +36,29 @@
 
   function addCommand(newCommand: string) {
     commands = [...commands, newCommand];
+    commandsPtr = commands.length;
     autoScroll();
   }
 
-  function onEnter(event: KeyboardEvent) {
-    if (event.key !== "Enter" || cmd === "") return false;
-    addCommand(cmd);
-    parseCommand(cmd); // attempt to carry out the instruction
-    cmd = ""; // reset
+  function onKeyUp(event: KeyboardEvent) {
+    switch (event.key) {
+      case "Enter":
+        if (cmd === "") break;
+        addCommand(cmd); // add the instruction to the array of previous instructions
+        parseCommand(cmd); // attempt to carry out the instruction
+        cmd = ""; // reset
+        break;
+      case "ArrowUp":
+        if (commandsPtr > 0) commandsPtr -= 1;
+        cmd = commands[commandsPtr];
+        break;
+      case "ArrowDown":
+        if (commandsPtr < commands.length) commandsPtr += 1;
+        cmd = commands[commandsPtr];
+        break;
+      default:
+        break;
+    }
   }
 
   function autoScroll() {
@@ -70,7 +88,7 @@
       autofocus
       placeholder=">&nbsp;"
       bind:value={cmd}
-      on:keyup={onEnter}
+      on:keyup={onKeyUp}
     />
   </div>
 </div>
