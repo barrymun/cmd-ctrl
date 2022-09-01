@@ -1,11 +1,10 @@
 <script lang="ts">
+  import player from "../assets/player.jpg";
 </script>
 
-<div class="container">
-  PLAYER
+<div class="h-full w-full">
+  <img src={player} alt="player" class="h-full w-full" />
 </div>
 
 <style>
-  .container {
-  }
 </style>

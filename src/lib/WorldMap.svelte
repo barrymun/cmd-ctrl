@@ -25,19 +25,22 @@
           <div class="map-col">
             <div
               id={x.toString() + y.toString()}
-              class="tile"
+              class="h-24 w-24 flex justify-center items-center p-2"
               on:click={() => scrollToTile(x, y, true)}
             >
-              {#if mapCol.type === 1}
-                <MapBlockPlayer />
-              {:else if mapCol.type === 2}
-                <MapBlockBlank />
-              {:else if mapCol.type === 3}
-                <MapBlockCity />
-              {:else}
-                {"..."}
-              {/if}
-              &nbsp;{x.toString() + y.toString()}
+              <div
+                class="rounded-lg bg-white shadow h-full overflow-hidden rounded-[50%]"
+              >
+                {#if mapCol.type === 1}
+                  <MapBlockPlayer />
+                {:else if mapCol.type === 2}
+                  <MapBlockBlank />
+                {:else if mapCol.type === 3}
+                  <MapBlockCity />
+                {:else}
+                  {"..."}
+                {/if}
+              </div>
             </div>
           </div>
         {/each}
@@ -71,7 +74,6 @@
   .tile {
     height: 100px;
     width: 100px;
-    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
