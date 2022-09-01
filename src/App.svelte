@@ -18,7 +18,9 @@
 
 <main>
   <div class="world-map">
-    <WorldMap bind:this={worldMap} />
+    <div class="overflow-hidden rounded-lg bg-white shadow m-2 h-full">
+      <WorldMap bind:this={worldMap} />
+    </div>
   </div>
 
   <div class="terminal">
@@ -31,9 +33,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 80vh;
+    height: calc(80vh - 16px);
     width: 50%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
   }
 
   .terminal {
