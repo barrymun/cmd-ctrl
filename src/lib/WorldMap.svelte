@@ -18,6 +18,7 @@
 </script>
 
 <div class="container">
+  <div class="container-inner">
     {#each mapRows as mapCols, x}
       <div class="map-row">
         {#each mapCols as mapCol, y}
@@ -42,6 +43,7 @@
         {/each}
       </div>
     {/each}
+  </div>
 </div>
 
 <style>
@@ -50,6 +52,13 @@
     width: 100%;
     overflow: hidden;
     cursor: pointer;
+  }
+
+  .container-inner {
+    padding: 250px;
+    /* account for 2x padding on the height and width */
+    height: calc(100% + 500px);
+    width: calc(100% + 500px);
   }
 
   .map-row {
