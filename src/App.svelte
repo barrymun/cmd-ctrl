@@ -17,33 +17,20 @@
 </script>
 
 <main>
-  <div class="world-map">
-    <div class="overflow-hidden rounded-lg bg-white shadow m-2 h-full">
+  <div class="fixed top-0 left-0 h-[calc(80vh-12px)] w-3/6 m-2">
+    <div class="rounded-lg bg-white shadow h-full overflow-hidden">
       <WorldMap bind:this={worldMap} />
     </div>
   </div>
 
-  <div class="terminal">
-    <Terminal {scrollToTile} />
+  <div class="fixed bottom-0 h-[calc(20vh-12px)] w-[calc(100%-16px)] m-2">
+    <div
+      class="rounded-lg bg-white shadow p-1 bg-slate-500 text-green-400 h-[calc(100%-0px)] w-full"
+    >
+      <Terminal {scrollToTile} />
+    </div>
   </div>
 </main>
 
 <style>
-  .world-map {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: calc(80vh - 16px);
-    width: 50%;
-    /* border: 1px solid black; */
-  }
-
-  .terminal {
-    position: fixed;
-    bottom: 0;
-    height: 20vh;
-    width: 100%;
-    background: darkgray;
-    color: aqua;
-  }
 </style>
