@@ -2,9 +2,9 @@
   import { onMount, SvelteComponent } from "svelte";
   import WorldMap from "./lib/WorldMap.svelte";
   import Terminal from "./lib/Terminal.svelte";
-  import VehicleArmorDisplay from "./lib/VehicleArmorDisplay.svelte";
-  import ResourceDisplay from "./lib/ResourceDisplay.svelte";
-  import VehicleDisplay from "./lib/VehicleDisplay.svelte";
+  import DisplayVehicleArmor from "./lib/DisplayVehicleArmor.svelte";
+  import DisplayResource from "./lib/DisplayResource.svelte";
+  import DisplayVehicle from "./lib/DisplayVehicle.svelte";
 
   let worldMap: SvelteComponent;
 
@@ -29,9 +29,9 @@
   <div class="fixed top-0 right-0 h-[calc(80vh-12px)] w-[calc(50%-12px)] m-2">
     <div class="rounded-lg bg-white shadow h-full overflow-hidden">
       <div class="h-full overflow-scroll">
-        <VehicleArmorDisplay />
-        <ResourceDisplay />
-        <VehicleDisplay />
+        <DisplayVehicleArmor />
+        <DisplayResource />
+        <DisplayVehicle />
       </div>
     </div>
   </div>
