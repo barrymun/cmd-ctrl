@@ -9,6 +9,21 @@ export const playerResources = writable({
   superAlloy: 0,
 });
 
+export const playerVehicles = writable({
+  a1: 0,  // low offence + slow transport
+  a2: 0,  // low-moderate offence
+  b1: 0,  // fast defence
+  b2: 0,  // very, very fast recon
+  c1: 0,  // moderate defence
+  c2: 0,  // moderate-high ranged offence
+  d1: 0,  // very fast moderate offence, low-moderate defence
+  d2: 0,  // fast moderate offence, moderate-high defence
+  e1: 0,  // transport
+  e2: 0,  // high ranged offence
+  f1: 0,  // very high defence, slow
+  f2: 0,  // very high ranged offence, slow
+});
+
 export const playerVehicleArmorLevel = writable({
   topside: 1,
   underside: 1,
