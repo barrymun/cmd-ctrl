@@ -20,9 +20,9 @@
 <div class="container">
   <div class="container-inner">
     {#each mapRows as mapCols, x}
-      <div class="map-row">
+      <div class="flex">
         {#each mapCols as mapCol, y}
-          <div class="map-col">
+          <div class="">
             <div
               id={x.toString() + y.toString()}
               class="h-24 w-24 flex justify-center items-center p-2"
@@ -31,15 +31,22 @@
               <div
                 class="rounded-lg bg-white shadow h-full overflow-hidden rounded-[50%]"
               >
-                {#if mapCol.type === 1}
-                  <MapBlockPlayer />
-                {:else if mapCol.type === 2}
-                  <MapBlockBlank />
-                {:else if mapCol.type === 3}
-                  <MapBlockCity />
-                {:else}
-                  {"..."}
-                {/if}
+                <div class="has-tooltip h-full">
+                  <span
+                    class="tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-12"
+                  >
+                    {"(" + x.toString() + ", " + y.toString() + ")"}
+                  </span>
+                  {#if mapCol.type === 1}
+                    <MapBlockPlayer />
+                  {:else if mapCol.type === 2}
+                    <MapBlockBlank />
+                  {:else if mapCol.type === 3}
+                    <MapBlockCity />
+                  {:else}
+                    {"..."}
+                  {/if}
+                </div>
               </div>
             </div>
           </div>
@@ -62,13 +69,6 @@
     /* account for 2x padding on the height and width */
     height: calc(100% + 500px);
     width: calc(100% + 500px);
-  }
-
-  .map-row {
-    display: flex;
-  }
-
-  .map-col {
   }
 
   .tile {
