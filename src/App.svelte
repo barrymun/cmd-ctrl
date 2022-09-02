@@ -11,7 +11,7 @@
   // TODO: localStorage to manage map layout if procedurally generated
   // or should the map layout be fixed & the data retrieved from a json file etc.?
   onMount(() => {
-    console.log("MOUNTED");
+    // console.log("MOUNTED");
   });
 
   function scrollToTile(x: number, y: number) {

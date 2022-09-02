@@ -1,6 +1,6 @@
 <script lang="ts">
   import { playerResources } from "../stores.js";
-  import Table from "../components/Table.svelte";
+  import DisplayTable from "../components/DisplayTable.svelte";
 
   let _playerResources: object;
 
@@ -12,7 +12,7 @@
 </script>
 
 <main class="mt-10">
-  <Table>
+  <DisplayTable name="Resources">
     {#each Object.entries(_playerResources) as [key, value], index (key)}
       <tr>
         <td
@@ -25,5 +25,5 @@
         </td>
       </tr>
     {/each}
-  </Table>
+  </DisplayTable>
 </main>
