@@ -3,6 +3,7 @@
   import WorldMap from "./lib/WorldMap.svelte";
   import Terminal from "./lib/Terminal.svelte";
   import VehicleArmor from "./lib/VehicleArmor.svelte";
+  import Resources from "./lib/Resources.svelte";
 
   let worldMap: SvelteComponent;
 
@@ -27,6 +28,7 @@
   <div class="fixed top-0 right-0 h-[calc(80vh-12px)] w-[calc(50%-12px)] m-2">
     <div class="rounded-lg bg-white shadow h-full overflow-hidden">
       <VehicleArmor />
+      <Resources />
     </div>
   </div>
 

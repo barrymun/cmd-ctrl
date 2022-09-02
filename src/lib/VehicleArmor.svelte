@@ -7,7 +7,7 @@
 		_playerVehicleArmorLevel = value;
 	});
 
-  console.log(_playerVehicleArmorLevel)
+  // console.log(_playerVehicleArmorLevel)
 </script>
 
 <main></main>
