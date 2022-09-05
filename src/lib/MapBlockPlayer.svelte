@@ -2,9 +2,7 @@
   import player from "../assets/player.jpg";
 </script>
 
-<div class="h-full w-full">
-  <img src={player} alt="player" class="h-full w-full" />
-</div>
+<img src={player} alt="player" class="h-full w-full" />
 
 <style>
 </style>

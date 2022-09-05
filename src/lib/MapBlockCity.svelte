@@ -2,9 +2,7 @@
   import city from "../assets/city.jpg";
 </script>
 
-<div class="h-full w-full">
-  <img src={city} alt="city" class="h-full w-full" />
-</div>
+<img src={city} alt="city" class="h-full w-full" />
 
 <style>
 </style>

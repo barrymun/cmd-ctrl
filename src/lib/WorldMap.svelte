@@ -37,15 +37,17 @@
                   >
                     {"(" + x.toString() + ", " + y.toString() + ")"}
                   </span>
-                  {#if mapCol.type === 1}
-                    <MapBlockPlayer />
-                  {:else if mapCol.type === 2}
-                    <MapBlockBlank />
-                  {:else if mapCol.type === 3}
-                    <MapBlockCity />
-                  {:else}
-                    {"..."}
-                  {/if}
+                  <div class="h-full w-full">
+                    {#if mapCol.type === 1}
+                      <MapBlockPlayer />
+                    {:else if mapCol.type === 2}
+                      <MapBlockBlank />
+                    {:else if mapCol.type === 3}
+                      <MapBlockCity />
+                    {:else}
+                      {"..."}
+                    {/if}
+                  </div>
                 </div>
               </div>
             </div>
