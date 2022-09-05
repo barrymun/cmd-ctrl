@@ -31,22 +31,25 @@
               <div
                 class="rounded-lg bg-white shadow h-full overflow-hidden rounded-[50%]"
               >
-                <div class="has-tooltip h-full">
-                  <span
-                    class="tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-12"
+                <div class="h-full w-full relative z-10">
+                  {#if mapCol.type === 1}
+                    <MapBlockPlayer />
+                  {:else if mapCol.type === 2}
+                    <MapBlockBlank />
+                  {:else if mapCol.type === 3}
+                    <MapBlockCity />
+                  {:else}
+                    {"..."}
+                  {/if}
+
+                  <div
+                    class="absolute opacity-0 h-full w-full top-1 left-1 hover:opacity-100 hover:z-20"
                   >
-                    {"(" + x.toString() + ", " + y.toString() + ")"}
-                  </span>
-                  <div class="h-full w-full">
-                    {#if mapCol.type === 1}
-                      <MapBlockPlayer />
-                    {:else if mapCol.type === 2}
-                      <MapBlockBlank />
-                    {:else if mapCol.type === 3}
-                      <MapBlockCity />
-                    {:else}
-                      {"..."}
-                    {/if}
+                    <span
+                      class="rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-12"
+                    >
+                      {"(" + x.toString() + ", " + y.toString() + ")"}
+                    </span>
                   </div>
                 </div>
               </div>
