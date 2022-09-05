@@ -1,12 +1,12 @@
 import { writable } from 'svelte/store';
 
 export const playerResources = writable({
+  stone: 0,
   copper: 0,  // for the wiring
   plastic: 0,
   steel: 0,
   aluminium: 0,
   carbonFibre: 0,
-  superAlloy: 0,
 });
 
 export const playerVehicles = writable({
