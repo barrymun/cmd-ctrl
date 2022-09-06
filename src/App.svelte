@@ -20,13 +20,13 @@
 </script>
 
 <main>
-  <div class="fixed top-0 left-0 h-[calc(80vh-12px)] w-[calc(50%-12px)] m-2">
+  <div class="fixed top-0 left-0 h-[calc(80vh-12px)] w-[calc(60%-12px)] m-2">
     <div class="rounded-lg bg-white shadow h-full overflow-hidden">
       <WorldMap bind:this={worldMap} />
     </div>
   </div>
 
-  <div class="fixed top-0 right-0 h-[calc(80vh-12px)] w-[calc(50%-12px)] m-2">
+  <div class="fixed top-0 right-0 h-[calc(80vh-12px)] w-[calc(40%-12px)] m-2">
     <div class="rounded-lg bg-white shadow h-full overflow-hidden">
       <div class="h-full overflow-scroll">
         <DisplayVehicleArmor />

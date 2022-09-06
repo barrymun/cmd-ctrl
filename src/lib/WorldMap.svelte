@@ -18,6 +18,11 @@
 </script>
 
 <div class="container">
+  <div class="absolute h-40 w-40 bottom-0 right-0">
+    <div class="lg bg-white shadow h-full z-40">
+    MINI MAP
+    </div>
+  </div>
   <div class="container-inner">
     {#each mapRows as mapCols, x}
       <div class="flex">
@@ -74,16 +79,5 @@
     /* account for 2x padding on the height and width */
     height: calc(100% + 500px);
     width: calc(100% + 500px);
-  }
-
-  .tile {
-    height: 100px;
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .tile:hover {
-    background-color: lightblue;
   }
 </style>
